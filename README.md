@@ -55,7 +55,7 @@ should output exactly 'NAN' for _not a number_. Finally, if the numerator is 0, 
 ### `const` Correctness
 
 In C++, the concept of `const`-correctness is important. This means that all functions that do not change the state of
-the data members shoud be marked as const at the end of the function signature, in both the declaration and definition.
+the data members should be marked as const at the end of the function signature, in both the declaration and definition.
 For example, the setter and getter for the denominator should be declared as:
 
 ```cpp

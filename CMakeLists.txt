@@ -1,14 +1,17 @@
 # Minimum version can be no higher than 3.5 as Ubuntu package management uses this version.
 cmake_minimum_required(VERSION 3.5)
 
-project (EX07-Fraction)
+project (EX02-Fraction)
 
 set(SOURCE_PREFIX "fraction")
 set(EXEC_NAME "Fraction")
 set(CMAKE_CXX_STANDARD 11)
 
-if(EXISTS ${CMAKE_HOME_DIRECTORY}/csv13-lib/CMakeLists.txt)
-    include(csv13-lib/CMakeLists.txt)
+if(EXISTS ${CMAKE_HOME_DIRECTORY}/csv15-lib/CMakeLists.txt)
+    include(csv15-lib/CMakeLists.txt)
+elseif(EXISTS /usr/local/csv15-lib/CMakeLists.txt)
+    include(/usr/local/csv15-lib/CMakeLists.txt)
+    add_dependencies(${EXEC_NAME}_GTest ${EXEC_NAME})
 else()
-    add_custom_target(submodule-init ALL git submodule init COMMAND git submodule update --recursive WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+    add_custom_target(add-submodules ALL git clone https://github.com/vc-csv15/csv15-lib.git)
 endif()

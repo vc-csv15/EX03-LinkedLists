@@ -45,13 +45,13 @@
 
 namespace {
 
-using edu::vcccd::vc::csv13::Fraction;
+using edu::vcccd::vc::csv15::Fraction;
 
 using std::string;
 
 using namespace ::testing_internal;
 
-class FractionTest : public ::testing::Test {
+class FractionFixture : public ::testing::Test {
 protected:
     static const uint MAX_TESTED_SCORE = 20;
     static const uint MAX_OVERALL_SCORE = 25;
@@ -78,7 +78,7 @@ protected:
     }
 };
 
-uint FractionTest::_testScore = 0;
+uint FractionFixture::_testScore = 0;
 
 void _testFractionOutput(int32_t i1, int32_t i2, const std::string &expected, uint &score, uint points) {
     // This can be an ofstream as well or any other ostream
@@ -96,7 +96,7 @@ void _testFractionOutput(int32_t i1, int32_t i2, const std::string &expected, ui
     score += points;
 }
 
-TEST_F(FractionTest, Basic) {
+TEST_F(FractionFixture, Basic) {
     // This test is named "Identity", it checks that the basic identity
     // complex number, i, has the correct values for real and imaginary
     // parts.
@@ -111,7 +111,7 @@ TEST_F(FractionTest, Basic) {
     _testFractionOutput(gcd *  9, gcd * 17, "9 / 17", _testScore, 6);
 }
 
-TEST_F(FractionTest, TestZeroDenominator) {
+TEST_F(FractionFixture, TestZeroDenominator) {
 
     Fraction f(0, 0);
     ASSERT_NO_DEATH(f.output(), "");
